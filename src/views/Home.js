@@ -23,6 +23,10 @@ export default function Home() {
           <div>{s.scientific_name}</div>
         </Link>
       ))}
+
+      <Link to={`/makeShark`}>
+        <div>create your own shark!</div>
+      </Link>
     </>
   );
 }

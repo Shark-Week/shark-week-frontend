@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './views/Home';
+import MakeShark from './views/MakeShark';
 import SharkPage from './views/SharkPage';
 
 export default function App() {
@@ -7,6 +8,9 @@ export default function App() {
     <>
       <BrowserRouter>
         <Switch>
+          <Route exact path="/makeShark">
+            <MakeShark />
+          </Route>
           <Route exact path="/shark/:id">
             <SharkPage />
           </Route>
