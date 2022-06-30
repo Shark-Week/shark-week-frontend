@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 export default function SharkPage() {
   const [shark, setShark] = useState([]);
-
+  const history = useHistory();
   const { id } = useParams();
   console.log(id);
+
+  const handleDelete = async () => {
+    console.log('DELETing', id);
+    //request options but with a different method.
+    const requestOptions = {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    };
+    fetch(`http://localhost:7890/sharks/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+    history.push('/');
+    //page redirect to '/'
+  };
 
   useEffect(() => {
     const load = async () => {
@@ -18,11 +32,17 @@ export default function SharkPage() {
 
   return (
     <div>
-      <h1>{shark.scientific_name}</h1>
-      <p>Family: {shark.family}</p>
-      <p>Kingdom: {shark.kingdom}</p>
-      <p>Status: ({shark.living}) </p>
-      <p>Did you know that {shark.random_fact}?</p>
+      <div>
+        <h1>{shark.scientific_name}</h1>
+        <p>Family: {shark.family}</p>
+        <p>Kingdom: {shark.kingdom}</p>
+        <p>Status: ({shark.living}) </p>
+        <p>Did you know that {shark.random_fact}?</p>
+      </div>
+      <a href={`/shark/${id}/edit`}>
+        <p>Edit</p>
+      </a>
+      <a onClick={handleDelete}>Delete</a>
     </div>
   );
 }

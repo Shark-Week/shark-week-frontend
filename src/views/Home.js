@@ -20,7 +20,7 @@ export default function Home() {
       <h2>FINS UP :)</h2>
       {shark.map((s) => (
         <Link to={`/shark/${s.id}`} key={s.id}>
-          <div>{s.scientific_name}</div>
+          <p>{s.scientific_name}</p>
         </Link>
       ))}
 
