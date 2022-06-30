@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const history = useHistory();
   const submitForm = async () => {
     const requestOptions = {
       method: 'POST',
@@ -21,7 +23,7 @@ export default function SignUp() {
 
   return (
     <div>
-      {' '}
+      <h2>Sign Up!!!</h2>{' '}
       <label>
         {' '}
         Email:

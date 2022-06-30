@@ -4,6 +4,7 @@ import Header from './views/Header';
 import Home from './views/Home';
 import MakeShark from './views/MakeShark';
 import SharkPage from './views/SharkPage';
+import SignUp from './views/SignUp';
 
 export default function App() {
   return (
@@ -23,6 +24,12 @@ export default function App() {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route exact path="/signup">
+            <SignUp />
+          </Route>
+          {/* <Route exact path="/signin">
+            <Home />
+          </Route> */}
         </Switch>
       </BrowserRouter>
     </>
